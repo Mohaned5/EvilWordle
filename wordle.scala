@@ -6,16 +6,16 @@ object M2 {
 import io.Source
 import scala.util._
 
-/* Takes an URL-string as argument and requests the corresponding file. 
+/* Takes a string as argument and requests the corresponding file. 
 Returns the word list appropriately broken up into lines. */
 def get_wordle_list(url: String) : List[String] = {
-    Try(Source.fromURL(url)("ISO-8859-1").mkString.split("\n").toList).
+    Try(Source.fromFile(url)("ISO-8859-1").mkString.split("\n").toList).
         getOrElse {Nil}
 }
 
 
 // some starting URLs for the crawler
-val secrets = get_wordle_list("https://nms.kcl.ac.uk/christian.urban/wordle.txt")
+val secrets = get_wordle_list("wordle.txt")
 
 /* Removes n occurrences of an element from a list (if this element is less than
 n times present, then remove all occurrences).*/
